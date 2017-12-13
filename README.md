@@ -12,7 +12,7 @@ This is a *plug-and-play* Laravel package to send a message to a Slack channel v
 
 1) Install the package by running this command in your terminal/cmd:
 ```
-composer require freshbitsweb/slack-error-handler
+composer require freshbitsweb/slack-error-notifier
 ```
 
 2) Import config file by running this command in your terminal/cmd:
