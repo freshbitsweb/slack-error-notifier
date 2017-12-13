@@ -54,9 +54,7 @@ class SlackErrorNotifierServiceProvider extends ServiceProvider
 
             // Add slack handler to the monologger
             $slackHandler = new SlackWebhookHandler($webhookUrl, null, null, true, null, false, true, $this->getlogLevel($logger));
-            $slackHandler->pushProcessor(new MemoryUsageProcessor);
-            $slackHandler->pushProcessor(new RequestDataProcessor);
-            $slackHandler->pushProcessor(new WebProcessor);
+            $slackHandler = $this->pushProcessors($slackHandler);
             $logger->pushHandler($slackHandler);
         }
     }
@@ -69,8 +67,26 @@ class SlackErrorNotifierServiceProvider extends ServiceProvider
      */
     protected function getLogLevel($logger)
     {
-        $logLevel = strtoupper($this->app->make('config')->get('app.log_level', 'error'));
+        $logLevel = strtoupper(config('app.log_level', 'error'));
 
         return constant(get_class($logger) . '::' . $logLevel);
+    }
+
+    /**
+     * Pushes number of processors to the handler to add extra parameters to the log message
+     *
+     * @param \Monolog\Handler\SlackWebhookHandler
+     * @return \Monolog\Handler\SlackWebhookHandler
+     */
+    protected function pushProcessors($handler)
+    {
+        if (config('slack_error_notifier.add_memory_usage')) {
+            $handler->pushProcessor(new MemoryUsageProcessor);
+        }
+
+        $handler->pushProcessor(new RequestDataProcessor);
+        $handler->pushProcessor(new WebProcessor);
+
+        return $handler;
     }
 }

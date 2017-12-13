@@ -9,9 +9,17 @@ class RequestDataProcessor
      */
     public function __invoke($record)
     {
-        $record['extra']['inputs'] = request()->except(config('slack_error_notifier.ignore_request_fields'));
-        $record['extra']['headers'] = request()->header();
-        $record['extra']['session'] = session()->all();
+        if (config('slack_error_notifier.add_input_data')) {
+            $record['extra']['inputs'] = request()->except(config('slack_error_notifier.ignore_request_fields'));
+        }
+
+        if (config('slack_error_notifier.add_request_headers')) {
+            $record['extra']['headers'] = request()->header();
+        }
+
+        if (config('slack_error_notifier.add_session_data')) {
+            $record['extra']['session'] = session()->all();
+        }
 
         return $record;
     }
