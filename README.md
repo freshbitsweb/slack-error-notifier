@@ -1,4 +1,6 @@
-# Slack Error Notifier
+![Slack Error Notifier](./slack-error-notifier.png)
+
+# Slack Error Notifier (Alternative to *Bugsnag/Sentry*)
 If you can't use *Bugsnag* or *Sentry* for monitoring your **production Laravel application**, here is a really simple solution to get notified when anything goes wrong.
 
 This is a *plug-and-play* Laravel package to send a message to a Slack channel via an [Incoming WebHook](https://api.slack.com/incoming-webhooks) when error/exception occurs in your application.
