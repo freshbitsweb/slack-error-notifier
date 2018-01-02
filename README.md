@@ -1,4 +1,4 @@
-![Slack Error Notifier](./slack-error-notifier.png)
+![Slack Error Notifier](./slack-error-notifier.png "Slack Error Notifier")
 
 # Slack Error Notifier (Alternative to *Bugsnag/Sentry*)
 If you can't use *Bugsnag* or *Sentry* for monitoring your **production Laravel application**, here is a really simple solution to get notified when anything goes wrong.
@@ -37,6 +37,10 @@ SLACK_WEBHOOK_URL=https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/xxxxxxxxx
 * (bool) add_input_data => Set to *true* if you wish to send input data in the slack message
 
 * (array) ignore_request_fields => If input data is being sent, you can specify the inputs from the user that should not be sent to Slack for example, password,cc number, etc.
+
+And it's done. Yeah, that simple. Here's a video demo for a quick look:
+
+[![Youtube Video](./youtube-thumb.png "Youtube Video")](https://www.youtube.com/watch?v=jeljU856bzE)
 
 #### Note
 This package uses *Monolog* library and sends a notification message based on the [**log_level**](https://laravel.com/docs/5.5/errors#log-severity-levels) configuration setting. So, if you set it to *alert*, only alert and emergency level errors will be considered.
