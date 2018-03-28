@@ -36,7 +36,8 @@ class SlackErrorNotifierServiceProvider extends ServiceProvider
     {
         // Users can specify only the options they actually want to override
         $this->mergeConfigFrom(
-            __DIR__.'/../config/slack_error_notifier.php', 'slack_error_notifier'
+            __DIR__.'/../config/slack_error_notifier.php',
+            'slack_error_notifier'
         );
     }
 
