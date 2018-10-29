@@ -19,10 +19,12 @@ class SlackErrorNotifierServiceProvider extends ServiceProvider
     */
     public function boot()
     {
-        // Publish config file
-        $this->publishes([
-            __DIR__.'/../config/slack_error_notifier.php' => config_path('slack_error_notifier.php'),
-        ], 'slack-error-notifier-config');
+        if ($this->app->runningInConsole()) {
+            // Publish config file
+            $this->publishes([
+                __DIR__.'/../config/slack_error_notifier.php' => config_path('slack_error_notifier.php'),
+            ], 'slack-error-notifier-config');
+        }
 
         $this->pushSlackHandlerToLogger();
     }
