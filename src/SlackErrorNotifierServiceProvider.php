@@ -70,7 +70,9 @@ class SlackErrorNotifierServiceProvider extends ServiceProvider
      */
     protected function getLogLevel($logger)
     {
-        $logLevel = strtoupper(config('app.log_level', 'error'));
+        $logLevel = config('slack_error_notifier.log_level') ?: config('app.log_level', 'error');
+
+        $logLevel = strtoupper($logLevel);
 
         return constant(get_class($logger) . '::' . $logLevel);
     }

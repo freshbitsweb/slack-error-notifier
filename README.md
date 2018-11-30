@@ -42,6 +42,8 @@ SLACK_WEBHOOK_URL=https://hooks.slack.com/services/XXXXXXXXX/XXXXXXXXX/xxxxxxxxx
 
 * (array) ignore_request_fields => If input data is being sent, you can specify the inputs from the user that should not be sent to Slack for example, password,cc number, etc.
 
+* (env) SLACK_LOG_LEVEL => Specify minimum error level (#1) to notify slack.
+
 And it's done. Yeah, that simple. Here's a video demo for a quick look:
 
 [![Youtube Video](./youtube-thumb.png "Youtube Video")](https://www.youtube.com/watch?v=jeljU856bzE)

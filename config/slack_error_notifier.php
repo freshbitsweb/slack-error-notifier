@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'log_level' => env('SLACK_LOG_LEVEL', null),
+
     'webhook_url' => env('SLACK_WEBHOOK_URL', ''),
 
     'add_memory_usage' => true,
