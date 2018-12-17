@@ -9,6 +9,8 @@ class RequestDataProcessor
      */
     public function __invoke($record)
     {
+        $record['extra']['environment'] = config('app.env');
+
         if (config('slack_error_notifier.add_input_data')) {
             $record['extra']['inputs'] = request()->except(config('slack_error_notifier.ignore_request_fields'));
         }
